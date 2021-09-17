@@ -60,10 +60,10 @@ const StyledNav = styled.div`
         padding-left: 5rem;
         padding-right: 5rem;
         position: relative;
-        transition: all 0.35s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &:hover {
-            transform: scale(1.4);
+            transform: scale(1.2);
         }
 
         .clickable {
