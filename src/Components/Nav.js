@@ -12,13 +12,19 @@ const Nav = () => {
             </h1>
             <ul>
                 <li>
-                    <Link to="/">About Us</Link>
+                    <Link to="/" className="clickable">
+                        About Us
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/work">Our Work</Link>
+                    <Link to="/work" className="clickable">
+                        Our Work
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/contact" className="clickable">
+                        Contact Us
+                    </Link>
                 </li>
             </ul>
         </StyledNav>
@@ -51,8 +57,20 @@ const StyledNav = styled.div`
     }
 
     li {
-        padding-left: 10rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
         position: relative;
+        transition: all 0.35s ease-in-out;
+
+        &:hover {
+            transform: scale(1.4);
+        }
+
+        .clickable {
+            &:hover {
+                color: #23d997;
+            }
+        }
     }
 `;
 
