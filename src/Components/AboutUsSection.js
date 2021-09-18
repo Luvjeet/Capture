@@ -3,10 +3,12 @@ import home1 from '../img/home1.png';
 import { Layout, Hide, Image, Description } from '../script';
 import { motion } from 'framer-motion';
 import { titleAnimation, fade, photoAnim } from '../animation';
+import Wave from './Wave';
 
 const AboutUsSection = () => {
     return (
         <Layout>
+            <Wave />
             <Description>
                 <motion.div>
                     <Hide>
