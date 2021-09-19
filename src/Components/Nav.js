@@ -54,6 +54,12 @@ const StyledNav = styled.div`
         font-size: 1.5rem;
         font-family: 'Lobster', cursive;
         font-weight: lighter;
+        transition: all 0.3s ease-out;
+        &:hover {
+            color: #e482df;
+            filter: drop-shadow(0 0 0.75rem #e482df);
+            transform: scale(1.1);
+        }
     }
 
     li {
