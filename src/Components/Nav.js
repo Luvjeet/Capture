@@ -51,7 +51,7 @@ const StyledNav = styled.div`
     }
 
     #logo {
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-family: 'Lobster', cursive;
         font-weight: lighter;
         transition: all 0.3s ease-out;
