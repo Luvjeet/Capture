@@ -15,8 +15,12 @@ import {
     slider,
     sliderContainer,
 } from '../animation';
+import { useScroll } from '../Components/useScroll';
 
 const OurWork = () => {
+    const [element, controls] = useScroll();
+    const [element2, controls2] = useScroll();
+    const [element3, controls3] = useScroll();
     return (
         <Work
             variants={pageAnimation}
@@ -32,8 +36,13 @@ const OurWork = () => {
                 <Frame4 variants={slider} />
             </motion.div>
 
-            <Movie>
-                <motion.h2 variants={fade}>The Athlete</motion.h2>
+            <Movie
+                variants={fade}
+                animate={controls3}
+                ref={element3}
+                initial="hidden"
+            >
+                <motion.h2>The Athlete</motion.h2>
                 <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-athlete">
                     <Hide>
@@ -45,18 +54,36 @@ const OurWork = () => {
                     </Hide>
                 </Link>
             </Movie>
-            <Movie>
+            <Movie
+                variants={fade}
+                animate={controls}
+                ref={element}
+                initial="hidden"
+            >
                 <h2>The Racer</h2>
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-racer">
-                    <img src={theracer} alt="The Racer" />
+                    <motion.img
+                        variants={photoAnim}
+                        src={theracer}
+                        alt="The Racer"
+                    />
                 </Link>
             </Movie>
-            <Movie>
+            <Movie
+                variants={fade}
+                animate={controls2}
+                ref={element2}
+                initial="hidden"
+            >
                 <h2>Good Times</h2>
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/good-times">
-                    <img src={goodtimes} alt="Good times" />
+                    <motion.img
+                        variants={photoAnim}
+                        src={goodtimes}
+                        alt="Good times"
+                    />
                 </Link>
             </Movie>
         </Work>
@@ -74,7 +101,7 @@ const Work = styled(motion.div)`
     }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
     padding-bottom: 10rem;
 
     .line {
