@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import athlete from '../img/athlete-small.png';
 import theracer from '../img/theracer-small.png';
 import goodtimes from '../img/goodtimes-small.png';
+import { Image } from '../script';
 // Animation
 import { motion } from 'framer-motion';
 import {
@@ -16,11 +17,11 @@ import {
     sliderContainer,
 } from '../animation';
 import { useScroll } from '../Components/useScroll';
+import ScrollTop from '../Components/ScrollTop';
 
 const OurWork = () => {
     const [element, controls] = useScroll();
     const [element2, controls2] = useScroll();
-    const [element3, controls3] = useScroll();
     return (
         <Work
             variants={pageAnimation}
@@ -36,13 +37,8 @@ const OurWork = () => {
                 <Frame4 variants={slider} />
             </motion.div>
 
-            <Movie
-                variants={fade}
-                animate={controls3}
-                ref={element3}
-                initial="hidden"
-            >
-                <motion.h2>The Athlete</motion.h2>
+            <Movie>
+                <motion.h2 variants={fade}>The Athlete</motion.h2>
                 <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-athlete">
                     <Hide>
@@ -63,11 +59,13 @@ const OurWork = () => {
                 <h2>The Racer</h2>
                 <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-racer">
-                    <motion.img
-                        variants={photoAnim}
-                        src={theracer}
-                        alt="The Racer"
-                    />
+                    <Image>
+                        <motion.img
+                            variants={photoAnim}
+                            src={theracer}
+                            alt="The Racer"
+                        />
+                    </Image>
                 </Link>
             </Movie>
             <Movie
@@ -79,13 +77,16 @@ const OurWork = () => {
                 <h2>Good Times</h2>
                 <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/good-times">
-                    <motion.img
-                        variants={photoAnim}
-                        src={goodtimes}
-                        alt="Good times"
-                    />
+                    <Image>
+                        <motion.img
+                            variants={photoAnim}
+                            src={goodtimes}
+                            alt="Good times"
+                        />
+                    </Image>
                 </Link>
             </Movie>
+            <ScrollTop />
         </Work>
     );
 };
