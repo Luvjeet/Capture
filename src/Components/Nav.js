@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useLocation } from 'react-router';
 
 const Nav = () => {
+    const { pathname } = useLocation();
+
     return (
         <StyledNav>
             <h1>
@@ -12,19 +16,30 @@ const Nav = () => {
             </h1>
             <ul>
                 <li>
-                    <Link to="/" className="clickable">
-                        About Us
-                    </Link>
+                    <Link to="/">About Us</Link>
+                    <Line
+                        transition={{ duration: 0.75 }}
+                        initial={{ width: '0%' }}
+                        animate={{ width: pathname === '/' ? '45%' : '0%' }}
+                    />
                 </li>
                 <li>
-                    <Link to="/work" className="clickable">
-                        Our Work
-                    </Link>
+                    <Link to="/work">Our Work</Link>
+                    <Line
+                        transition={{ duration: 0.75 }}
+                        initial={{ width: '0%' }}
+                        animate={{ width: pathname === '/work' ? '45%' : '0%' }}
+                    />
                 </li>
                 <li>
-                    <Link to="/contact" className="clickable">
-                        Contact Us
-                    </Link>
+                    <Link to="/contact">Contact Us</Link>
+                    <Line
+                        transition={{ duration: 0.75 }}
+                        initial={{ width: '0%' }}
+                        animate={{
+                            width: pathname === '/contact' ? '45%' : '0%',
+                        }}
+                    />
                 </li>
             </ul>
         </StyledNav>
@@ -42,6 +57,9 @@ const StyledNav = styled.div`
     position: sticky;
     top: 0;
     z-index: 10;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     a {
         color: white;
@@ -54,14 +72,15 @@ const StyledNav = styled.div`
     }
 
     #logo {
-        font-size: 2rem;
+        font-size: 1.7rem;
         font-family: 'Lobster', cursive;
         font-weight: lighter;
         transition: all 0.3s ease-out;
+        display: inline-block;
         &:hover {
             color: #e482df;
             filter: drop-shadow(0 0 0.75rem #e482df);
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
     }
 
@@ -70,16 +89,33 @@ const StyledNav = styled.div`
         padding-right: 5rem;
         position: relative;
         transition: all 0.3s ease-in-out;
-
-        &:hover {
-            transform: scale(1.2);
+    }
+    @media (max-width: 1300px) {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        ul {
+            padding: 2rem;
+            justify-content: space-around;
+            width: 100%;
         }
-
-        .clickable {
-            &:hover {
-                color: #23d997;
-            }
+        #logo {
+            margin: 1rem;
         }
+        li {
+            padding: 0;
+        }
+    }
+`;
+
+const Line = styled(motion.div)`
+    height: 0.3rem;
+    background: #23d997;
+    width: 0%;
+    position: absolute;
+    bottom: -80%;
+    left: 30%;
+    @media (max-width: 1300px) {
+        width: 50%;
     }
 `;
 
